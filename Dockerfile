@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Set the working directory inside the container
-WORKDIR /application
+WORKDIR /app
 
 # Copy SSL certificate and key into container
 ADD fullchain.pem ssl/fullchain.pem
