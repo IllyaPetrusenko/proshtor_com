@@ -4,15 +4,15 @@ FROM python:3.9
 # Set the working directory inside the container
 WORKDIR /application
 
+# Copy SSL certificate and key into container
+COPY fullchain.pem .
+COPY privkey.pem .
+
 # Copy the requirements file to the container
 COPY requirements.txt .
 
 # Install the Python packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy SSL certificate and key into container
-COPY fullchain.pem .
-COPY privkey.pem .
 
 # Copy the rest of the application files to the container
 COPY . .
