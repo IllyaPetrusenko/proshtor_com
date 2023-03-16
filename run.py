@@ -1,6 +1,9 @@
 from flask import Flask, render_template
+from flask_sslify import SSLify
+
 
 app = Flask(__name__, template_folder='application/templates', static_folder='application/static')
+sslify = SSLify(app)
 
 
 @app.route("/")
@@ -9,4 +12,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', ssl_context=('fullchain1.pem', 'privkey1.pem'))
+    app.run(host="0.0.0.0", port=80, debug=False, ssl_context=("cert.pem", "key.pem"))
