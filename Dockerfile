@@ -1,12 +1,12 @@
 # Set the base image to use
 FROM python:3.9
 
+COPY . /app
+WORKDIR /app
+
 # Copy SSL certificate and key into container
 COPY fullchain.pem /etc/letsencrypt/live/proshtor.com-0001/fullchain.pem
 COPY /etc/letsencrypt/live/proshtor.com-0001/privkey.pem privkey.pem
-
-# Set the working directory inside the container
-WORKDIR /app
 
 # Copy the requirements file to the container
 COPY requirements.txt .
