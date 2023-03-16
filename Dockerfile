@@ -22,4 +22,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=ssl/fullchain.pem", "--keyfile=ssl/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
+CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=fullchain.pem", "--keyfile=privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
