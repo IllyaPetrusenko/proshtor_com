@@ -29,4 +29,4 @@ EXPOSE 443
 # Set the command to run when the container starts
 CMD ["python", "app.py"]
 
-COPY --chown=root:root --follow-symlinks fullchain.pem /etc/ssl/certs/
+COPY --chown=root:root fullchain.pem /etc/ssl/certs/
