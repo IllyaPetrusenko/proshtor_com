@@ -11,4 +11,4 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, ssl_context=('fullchain1.pem', 'privkey1.pem'))
