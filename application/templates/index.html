@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Proshtor</title>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <a href="proshtor.com"><img src="{{ url_for('static', filename='images/111.png') }}" alt="Logo"></a>
+    </div>
+    <nav>
+      <button class="button is-dark" id="about-us">Про нас</button>
+      <button class="button is-dark" id="career">Карʼєра</button>
+      <button class="button is-dark" id="contact-button">Зв'язатися з нами</button>
+    </nav>
+  </header>
+  <main class="main-content">
+    <div class="background-image">
+      <div class="overlay">
+        <p style="text-color: white;">Натисніть кнопку, щоб зв'язатися з нашою командою</p>
+        <button class="button is-dark" id="contact-button-2">Зв'язатися з нами</button>
+      </div>
+</div>
+  </main>
+  <div id="contact-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);">
+    <div class="contact-form" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px;">
+      <form onsubmit="return validateForm()">
+        <div class="notification is-danger is-light" id="divContent">
+          Введіть корректний номер телефону
+        </div>
+        <label for="name">Ім'я:</label>
+        <input class="input" type="text" id="name" name="name"><br><br>
+        <label for="phone">Номер телефону:</label>
+        <input class="input" type="text" id="phone" name="phone"><br><br>
+        <label for="comment">Коментар:</label><br>
+        <textarea class="textarea" placeholder="Введіть коментар" id="comment" name="comment"></textarea><br><br>
+        <input class="button is-dark submit-on-form" type="submit" value="Надіслати">
+      </form>
+      <button class="delete is-medium" id="close-button" style="position: absolute; top: 5px; right: 5px;">Закрити</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('divContent').style.display = 'none';
+    const contactButton = document.getElementById('contact-button');
+    const contactButton2 = document.getElementById('contact-button-2');
+    const contactOverlay = document.getElementById('contact-overlay');
+    const contactForm = document.getElementById('contact-form');
+    const closeButton = document.getElementById('close-button');
+
+    contactButton.addEventListener('click', () => {
+      contactOverlay.style.display = 'block';
+    });
+
+    contactButton2.addEventListener('click', () => {
+      contactOverlay.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', () => {
+      contactOverlay.style.display = 'none';
+    });
+
+    function validateForm() {
+    const phoneInput = document.getElementById('phone');
+    const phonePattern = /^\+?3?8?(0\d{9})$/; // допускається формат +380XXXXXXXXX або 0XXXXXXXXX
+
+    if (!phonePattern.test(phoneInput.value)) {
+      document.getElementById('divContent').style.display = 'block';
+      return false;
+    }
+
+    // Якщо номер телефону валідний, форму можна відправляти
+    return true;
+  }
+  </script>
+</body>
+</html>

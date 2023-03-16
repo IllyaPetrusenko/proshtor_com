@@ -1,0 +1,86 @@
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333333;
+        color: #fff;
+        padding: 10px;
+        margin-right: 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+    nav {
+        margin-right: 5%;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav li {
+        margin: 0 10px;
+    }
+
+    nav li a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .button.is-dark {
+        background-color: #333333;
+        border-color: transparent;
+        color: #fff;
+    }
+
+    .button.is-dark.submit-on-form {
+        left: 84.2%;
+        transform: translateX(-50%);
+    }
+
+    form {
+        margin-top: 15%;
+    }
+
+    .delete.is-medium {
+        background-color: gray;
+        margin-top: 3%;
+        margin-right: 2%;
+    }
+
+    .logo {
+      width: 100px;
+      height: 50px;
+    }
+
+    .main-content {
+      text-align: center;
+    }
+
+    .background-image {
+      background-image: url("../images/42.jpg");
+      background-size: cover;
+      background-position: center;
+      height: 100vh; /* змініть це значення залежно від потреб */
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1   ); /* колір підшару */
+      padding-top: 30%;
+      text-color: white;
+    }
+
+    .notification {
+      text-align: center;
+    }
