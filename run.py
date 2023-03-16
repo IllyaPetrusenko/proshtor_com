@@ -1,8 +1,6 @@
 from flask import Flask, render_template
-from flask_sslify import SSLify
 
 app = Flask(__name__, template_folder='application/templates', static_folder='application/static')
-sslify = SSLify(app)
 
 
 @app.route("/")
