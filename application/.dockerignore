@@ -1,0 +1,6 @@
+# Ignore these files and directories
+.git
+*.pyc
+# Include these files
+!ssl/fullchain.pem
+!ssl/privkey.pem
