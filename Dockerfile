@@ -5,8 +5,8 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy SSL certificate and key into container
-COPY fullchain.pem .
-COPY privkey.pem .
+ADD fullchain.pem .
+ADD privkey.pem .
 
 # Copy the requirements file to the container
 COPY requirements.txt .
