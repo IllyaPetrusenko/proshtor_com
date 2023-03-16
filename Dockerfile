@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 80
 
 # Set the command to run when the container starts
-CMD ["python", "app.py", "--port", "80"]
+CMD ["python", "run.py", "--port", "80"]
