@@ -1,8 +1,6 @@
 # Set the base image to use
 FROM python:3.9
 
-RUN apk --no-cache add openssl
-
 WORKDIR /app
 
 # Copy SSL certificate and key into container
