@@ -1,20 +1,22 @@
-# Set the base image to use
-FROM python:3.9
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim-buster
 
+# Set the working directory to /app
 WORKDIR /app
 
-# Copy the requirements file to the container
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-# Install the Python packages specified in requirements.txt
+# Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application files to the container
-COPY . .
+# Copy SSL certificate and private key into the container
+COPY cert.pem .
+COPY key.pem .
 
-# Expose port 80 for the Flask application
+# Expose ports 80 and 443 for HTTP and HTTPS traffic
 EXPOSE 80
 EXPOSE 443
 
-# Set the command to run when the container starts
-CMD ["python", "run.py"]
+# Run the app using gunicorn
+CMD ["gunicorn", "--bind", "0.0.0.0:80", "--keyfile", "key.pem", "--certfile", "cert.pem", "app:app"]
