@@ -1,12 +1,13 @@
 # Set the base image to use
 FROM python:3.9
 
-COPY . /app
+RUN apk --no-cache add openssl
+
 WORKDIR /app
 
 # Copy SSL certificate and key into container
-COPY fullchain.pem /etc/letsencrypt/live/proshtor.com-0001/fullchain.pem
-COPY /etc/letsencrypt/live/proshtor.com-0001/privkey.pem privkey.pem
+COPY privkey.pem /etc/ssl/private/
+COPY fullchain.pem /etc/ssl/certs/
 
 # Copy the requirements file to the container
 COPY requirements.txt .
@@ -17,9 +18,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application files to the container
 COPY . .
 
+# Set the environment variables for the SSL certificate paths
+ENV SSL_KEY_FILE=/etc/ssl/private/privkey.pem
+ENV SSL_CERT_FILE=/etc/ssl/certs/fullchain.pem
+
 # Expose port 80 for the Flask application
 EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=/etc/letsencrypt/live/proshtor.com-0001/fullchain.pem", "--keyfile=/etc/letsencrypt/live/proshtor.com-0001/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
+CMD ["python", "app.py"]
+
+COPY --chown=root:root --follow-symlinks fullchain.pem /etc/ssl/certs/
