@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy SSL certificate and key into container
 COPY fullchain1.pem .
-COPY privekey1.pem .
+COPY privkey1.pem .
 
 # Copy the requirements file to the container
 COPY requirements.txt .
