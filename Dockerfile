@@ -10,12 +10,12 @@ COPY requirements.txt .
 # Install the Python packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application files to the container
-COPY . .
-
 # Copy SSL certificate and key into container
 COPY fullchain.pem .
 COPY privkey.pem .
+
+# Copy the rest of the application files to the container
+COPY . .
 
 # Expose port 80 for the Flask application
 EXPOSE 80
