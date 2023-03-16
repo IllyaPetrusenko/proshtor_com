@@ -1,12 +1,12 @@
 # Set the base image to use
 FROM python:3.9
 
+# Copy SSL certificate and key into container
+COPY fullchain.pem .
+COPY privkey.pem .
+
 # Set the working directory inside the container
 WORKDIR /app
-
-# Copy SSL certificate and key into container
-ADD fullchain.pem .
-ADD privkey.pem .
 
 # Copy the requirements file to the container
 COPY requirements.txt .
