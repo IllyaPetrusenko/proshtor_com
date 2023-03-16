@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /application
 
 # Copy the requirements file to the container
 COPY requirements.txt .
@@ -15,6 +15,7 @@ COPY . .
 
 # Expose port 80 for the Flask application
 EXPOSE 80
+EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80"]
+CMD ["flask", "run", "--host=0.0.0.0", "--port=80", "--cert=cert.pem", "--key=key.pem"]
