@@ -2,8 +2,8 @@
 FROM python:3.9
 
 # Copy SSL certificate and key into container
-COPY fullchain.pem .
-COPY privkey.pem .
+COPY /etc/letsencrypt/live/proshtor.com-0001/fullchain.pem fullchain.pem
+COPY /etc/letsencrypt/live/proshtor.com-0001/privkey.pem privkey.pem
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -22,4 +22,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=fullchain.pem", "--keyfile=privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
+CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=/etc/letsencrypt/live/proshtor.com-0001/fullchain.pem", "--keyfile=/etc/letsencrypt/live/proshtor.com-0001/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
