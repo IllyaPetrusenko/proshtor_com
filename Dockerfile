@@ -21,4 +21,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "app.py"]
+CMD ["python", "run.py"]
