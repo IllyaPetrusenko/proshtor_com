@@ -14,12 +14,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Copy SSL certificate and key into container
-COPY fullchain.pem /etc/letsencrypt/live/proshtor.com/fullchain.pem
-COPY privkey.pem /etc/letsencrypt/live/proshtor.com/privkey.pem
+COPY fullchain.pem fullchain.pem
+COPY privkey.pem privkey.pem
 
 # Expose port 80 for the Flask application
 EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=/etc/letsencrypt/live/proshtor.com/fullchain.pem", "--keyfile=/etc/letsencrypt/live/proshtor.com/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
+CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=fullchain.pem", "--keyfile=privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
