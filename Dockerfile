@@ -2,7 +2,7 @@
 FROM python:3.9
 
 # Copy SSL certificate and key into container
-COPY /etc/letsencrypt/live/proshtor.com-0001/fullchain.pem fullchain.pem
+COPY fullchain.pem /etc/letsencrypt/live/proshtor.com-0001/fullchain.pem
 COPY /etc/letsencrypt/live/proshtor.com-0001/privkey.pem privkey.pem
 
 # Set the working directory inside the container
