@@ -22,5 +22,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Set the command to run when the container starts
-CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=/etc/letsencrypt/live/proshtor.com/fullchain.pem",
-"--keyfile=/etc/letsencrypt/live/proshtor.com/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
+CMD ["python", "run.py", "--port", "80", "gunicorn", "--certfile=/etc/letsencrypt/live/proshtor.com/fullchain.pem", "--keyfile=/etc/letsencrypt/live/proshtor.com/privkey.pem", "-w", "4", "-b", "0.0.0.0:443", "app:app"]
