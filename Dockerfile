@@ -19,8 +19,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Set the environment variables for the SSL certificate paths
-ENV SSL_KEY_FILE=/etc/ssl/private/privkey.pem
-ENV SSL_CERT_FILE=/etc/ssl/certs/fullchain.pem
+ENV SSL_KEY_FILE=../../archive/proshtor.com-0001/privkey.pem
+ENV SSL_CERT_FILE=../../archive/proshtor.com-0001/fullchain1.pem
 
 # Expose port 80 for the Flask application
 EXPOSE 80
