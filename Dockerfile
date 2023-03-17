@@ -19,4 +19,4 @@ EXPOSE 80
 EXPOSE 443
 
 # Run the app using gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "--keyfile", "key.pem", "--certfile", "cert.pem", "app:app"]
+CMD ["python", "run.py", "--keyfile", "key.pem", "--certfile", "cert.pem"]
